@@ -20,7 +20,7 @@ It will populate the standard readme sections and populate them with user entere
 * A link to the users github profile and their email.
 
 ## Link to Repo
-![Link to the Repository](https://github.com/AcheronandStyx/EzpzReadMeGenerator)
+https://github.com/AcheronandStyx/EzpzReadMeGenerator
 
 ## Screenshot
-![Screenshot of Ezpz Readme Generator](https://raw.github.com/AcheronandStyx/EzpzReadMeGenerator/utils/Capture.JPG)
+![Screenshot of Ezpz Readme Generator](https://raw.github.com/AcheronandStyx/EzpzReadMeGenerator/utils/Capture.PNG)
