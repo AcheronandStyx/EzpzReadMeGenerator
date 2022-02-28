@@ -2,7 +2,7 @@ var inquirer = require('inquirer');
 var fs = require('fs');
 const { resolve } = require('path');
 const generateMarkdown = require('./utils/generateMarkdown');
-const license = ['MIT', 'ISC', 'Apache'];
+const license = ['MIT', 'ISC', 'GNU General Public License'];
 
 // TODO: Include packages needed for this application
 
@@ -160,6 +160,11 @@ const questions = [
                 return false;
             }
         }
+    },
+    {
+        type: 'input',
+        name: 'name',
+        message: 'Please enter your name:',
     },
     {
         type: 'confirm',
