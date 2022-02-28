@@ -137,13 +137,13 @@ function writeToFile(fileName, data) {
 
 // TODO: Create a function to initialize app
 const init = () => {
-
-
-
-    writeToFile(filename, data); 
-    // init triggers the inquirer and readme creation
-    // generated data and user selected filename are the passed to writeToFile
+    return inquirer.prompt(questions);
 };
 
 // Function call to initialize app
-init();
+init().then(writeToFile);
+
+    //const fileName = 
+    //writeToFile(fileName, readmeData); 
+    // init triggers the inquirer and readme creation
+    // generated data and user selected filename are the passed to writeToFile
