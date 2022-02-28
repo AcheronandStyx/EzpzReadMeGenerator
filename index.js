@@ -9,6 +9,19 @@ const license = ['MIT', 'ISC', 'GNU General Public License'];
 // TODO: Create an array of questions for user input
 const questions = [
     {
+        type: 'input',
+        name: 'title',
+        message: 'What is the title of your project? (required)',
+        validate: nameInput => {
+            if (nameInput) {
+                return true;
+            } else {
+                console.log('Please enter a title!');
+                return false;
+            }
+        }
+    },
+    {
         type: 'confirm',
         name: 'confirmAddGit',
         message: 'Would you like to add your github username and a link to your profile?',
@@ -37,7 +50,7 @@ const questions = [
     {
         type: 'confirm',
         name: 'confirmEmail',
-        message: 'Would you like to add your email to the questions section?',
+        message: 'Would you like include your email in the questions section?',
         default: true
     },
     {
@@ -50,31 +63,20 @@ const questions = [
             } else {
                 return false;
             }
-        }
-    },
-    {
-        type: 'confirm',
-        name: 'confirmDescription',
-        message: 'Would you like to enter a description of yourproject?',
-        default: true
-    },
-    {
-        type: 'input',
-        name: 'title',
-        message: 'What is the title of your project?',
-        validate: nameInput => {
-            if (nameInput) {
-                return true;
+        },
+        validate: github => {
+            if (github) {
+              return true;
             } else {
-                console.log('Please enter a title!');
-                return false;
+              console.log('Please enter your email!');
+              return false;
             }
         }
     },
     {
         type: 'confirm',
         name: 'confirmDescription',
-        message: 'Would you like to enter a description of yourproject?',
+        message: 'Would you like to enter a description of your project?',
         default: true
     },
     {

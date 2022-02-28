@@ -19,7 +19,7 @@ function renderLicenseSection(data) {
     return `
   MIT License
 
-  Copyright &copy ${new Date().getFullYear()} ${data.name}
+  Copyright &copy; ${new Date().getFullYear()} ${data.name}
   
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to deal
@@ -304,7 +304,7 @@ function test(data) {
 
 function gitLink(data) {
   if (data.confirmAddGit) {
-    return 'Checkout my gitHub profile at [https://github.com/' + data.github + '](https://choosealicense.com/' + data.github + ')'
+    return 'Checkout my gitHub profile at [https://github.com/' + data.github + '](https://github.com/' + data.github + ').'
   } else {
     return '';
   }
@@ -313,7 +313,7 @@ function gitLink(data) {
 
 function email(data) {
   if (data.confirmEmail) {
-    return 'If you have additional questions please feel free to contact me at' + data.email;
+    return 'If you have additional questions please feel free to contact me at ' + data.email + '.';
   } else {
     return '';
   }
@@ -332,13 +332,13 @@ function generateMarkdown(data) {
 
   ## Table of Contents
 
-  -[Installation](#installation)
-  -[Usage](#usage)
-  -[License](#license)
-  -[Contribution Guidlines](#Contribution Guidlines)
-  -[Tests](#tests)
-  -[Questions](#questions)
-  -[License](#license)
+  * [Installation](#installation)
+  * [Usage](#usage)
+  * [License](#license)
+  * [Contribution Guidlines](#Contribution Guidlines)
+  * [Tests](#tests)
+  * [Questions](#questions)
+  * [License](#license)
 
   ## Installation
 
