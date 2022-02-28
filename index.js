@@ -100,7 +100,7 @@ const questions = [
     {
         type: 'input',
         name: 'install',
-        message: 'Please enter a installation instructions:',
+        message: 'Please enter installation instructions:',
         when: ({ confirmInstall }) => { // conditional that checks prior boolean and only runs this question if the user said true
             if (confirmInstall) {
                 return true;
@@ -128,22 +128,24 @@ const questions = [
         }
     },
     {
-        type: 'confirm',
+        type: 'list',
         name: 'confirmContributionGuidelines',
-        message: 'Would you like to enter contribution guidelines?',
-        default: true
+        message: 'Would you like to include the Contributor Covenant as your contribution guidelines, define your own or include no contribution guidelines?',
+        choices: ['Define my own', 'Use the Contributor Covenant', 'No Contribution Guidelines']
     },
     {
         type: 'input',
         name: 'contributionGuidelines',
         message: 'Please enter contribution guidelines:',
-        when: ({ confirmContributionGuidelines }) => { // conditional that checks prior boolean and only runs this question if the user said true
+        when: (questions) => questions.confirmContributionGuidelines === 'Define my own'
+        /*
+        when: ({ confirmContributionGuidelines  }) => { // conditional that checks prior boolean and only runs this question if the user said true
             if (confirmContributionGuidelines) {
                 return true;
             } else {
                 return false;
             }
-        }
+        }*/
     },
     {
         type: 'confirm',
@@ -164,15 +166,22 @@ const questions = [
         }
     },
     {
-        type: 'input',
-        name: 'name',
-        message: 'Please enter your name:',
-    },
-    {
         type: 'confirm',
         name: 'confirmLicense',
         message: 'Would you like to add a license to the readMe?',
         default: true
+    },
+    {
+        type: 'input',
+        name: 'name',
+        message: 'Please enter your name for use in the license section:',
+        when: ({ confirmLicense }) => { // conditional that checks prior boolean and only runs this question if the user said true
+            if (confirmLicense) {
+                return true;
+            } else {
+                return false;
+            }
+        }
     },
     {
         type: 'list',
