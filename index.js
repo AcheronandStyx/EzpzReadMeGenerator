@@ -1,6 +1,7 @@
 var inquirer = require('inquirer');
 var fs = require('fs');
 const { resolve } = require('path');
+const generateMarkdown = require('./utils/generateMarkdown');
 
 // TODO: Include packages needed for this application
 
@@ -112,12 +113,9 @@ const questions = [
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {
-    // USE TRIM ON FILE NAME TO CLEAR WHITE SPACE
-    fileName = fileName.trim();
-
+function writeToFile(data) {
     return new Promise((resolve, reject) => {
-        fs.writeFile('./dist/' + fileName + '.md', data, err =>{
+        fs.writeFile('./dist/readme.md', data, err =>{
 
             if (err) {
                 // if it errors return nothing.
@@ -135,13 +133,30 @@ function writeToFile(fileName, data) {
 
 };
 
-// TODO: Create a function to initialize app
-const init = () => {
+const userData = () => {
     return inquirer.prompt(questions);
+}
+
+// TODO: Create a function to initialize app
+function init() {
+    userData().then(userInput => {
+        // const fileName = userInput.title;
+        return generateMarkdown(userInput);
+    })
+    .then(markdown => {
+        //const fileName = userInput.title;
+        return writeToFile(markdown);
+    })
+    .then(response => {
+        console.log(response);
+    })
+    .catch(err => {
+        console.log(err);
+    });
 };
 
 // Function call to initialize app
-init().then(writeToFile);
+init();
 
     //const fileName = 
     //writeToFile(fileName, readmeData); 
