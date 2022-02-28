@@ -2,11 +2,62 @@ var inquirer = require('inquirer');
 var fs = require('fs');
 const { resolve } = require('path');
 const generateMarkdown = require('./utils/generateMarkdown');
+const license = ['MIT', 'ISC', 'Apache'];
 
 // TODO: Include packages needed for this application
 
 // TODO: Create an array of questions for user input
 const questions = [
+    {
+        type: 'confirm',
+        name: 'confirmAddGit',
+        message: 'Would you like to add your github username and a link to your profile?',
+        default: true
+    },
+    {
+        type: 'input',
+        name: 'github',
+        message: 'Enter your git Hub username (required):',
+        when: ({ confirmAddGit }) => { // conditional that checks prior boolean and only runs this question if the user said true
+            if (confirmAddGit) {
+                return true;
+            } else {
+                return false;
+            }
+        },
+        validate: github => {
+            if (github) {
+              return true;
+            } else {
+              console.log('Please enter your GitHub username!');
+              return false;
+            }
+        }
+    },
+    {
+        type: 'confirm',
+        name: 'confirmEmail',
+        message: 'Would you like to add your email to the questions section?',
+        default: true
+    },
+    {
+        type: 'input',
+        name: 'email',
+        message: 'Please enter your email:',
+        when: ({ confirmEmail }) => { // conditional that checks prior boolean and only runs this question if the user said true
+            if (confirmEmail) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    },
+    {
+        type: 'confirm',
+        name: 'confirmDescription',
+        message: 'Would you like to enter a description of yourproject?',
+        default: true
+    },
     {
         type: 'input',
         name: 'title',
@@ -109,6 +160,25 @@ const questions = [
                 return false;
             }
         }
+    },
+    {
+        type: 'confirm',
+        name: 'confirmLicense',
+        message: 'Would you like to add a license to the readMe?',
+        default: true
+    },
+    {
+        type: 'list',
+        name: 'license',
+        message: 'Please select a license:',
+        choices: license,
+        when: ({ confirmLicense }) => { // conditional that checks prior boolean and only runs this question if the user said true
+            if (confirmLicense) {
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
 ];
 
@@ -140,11 +210,11 @@ const userData = () => {
 // TODO: Create a function to initialize app
 function init() {
     userData().then(userInput => {
-        // const fileName = userInput.title;
+     
         return generateMarkdown(userInput);
     })
     .then(markdown => {
-        //const fileName = userInput.title;
+        
         return writeToFile(markdown);
     })
     .then(response => {
