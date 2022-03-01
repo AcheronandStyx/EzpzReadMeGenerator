@@ -24,4 +24,4 @@ It will populate the standard readme sections and populate them with user entere
 https://github.com/AcheronandStyx/EzpzReadMeGenerator
 
 ## Screenshot
-![Screenshot of Ezpz Readme Generator](https://raw.github.com/AcheronandStyx/EzpzReadMeGenerator/utils/Capture.PNG)
+![Screenshot of Ezpz Readme Generator](https://raw.github.com/AcheronandStyx/EzpzReadMeGenerator/utils/Capture.png)
