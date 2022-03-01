@@ -5,8 +5,9 @@ This is a simple command line program to generate a custom readme for your proje
 
 ## Table of Contents
 
-# [Usage](#usage)
-# [Screenshot](#screenshot)
+* [Usage](#usage)
+* [Repo](#link-to-repo)
+* [Screenshot](#screenshot)
 
 ## Usage
 This program is run via the commad line with node.js.
